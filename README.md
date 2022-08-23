@@ -31,11 +31,11 @@ Additional ideas to be added:
 - When the user marks the game completed/tried, it asks the user whether to delete the game from the database
 - rating
 - doubleclicking on the game opens a new window that shows detailed info for the game
-		* Name
-		* Console
-		* Genre
-		* Link to the game
-		* Status
-		* (Image)
-		* When the user marks the game completed/tried, it asks the user whether to delete the game from the database
-		* Also have a button to delete the game straight from database, ask for confirmation
+	* Name
+	* Console
+	* Genre
+	* Link to the game
+	* Status
+	* (Image)
+	* When the user marks the game completed/tried, it asks the user whether to delete the game from the database
+	* Also have a button to delete the game straight from database, ask for confirmation
