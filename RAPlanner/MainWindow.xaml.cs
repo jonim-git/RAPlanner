@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Squirrel;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +31,27 @@ namespace RAPlanner
             InitializeComponent();
             consoles = LoadConsolesList();
             LoadGamesList();
+
+            AddVersionNumber();
+            CheckForUpdates();
             lbConsole.ItemsSource = consoles;
             tbSetPercentage.Text = "Mastery %";
+        }
+
+        private async Task CheckForUpdates()
+        {
+            using (var manager = new UpdateManager(@"C:/Temp/Releases")) 
+            {
+                await manager.UpdateApp();
+            }
+        }
+
+        private void AddVersionNumber()
+        {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+
+            this.Title += $" v.{versionInfo.FileVersion}";
         }
 
         private List<string> LoadConsolesList()
