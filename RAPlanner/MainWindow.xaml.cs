@@ -1,4 +1,4 @@
-﻿using Squirrel;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -25,25 +25,15 @@ namespace RAPlanner
         List<Game> games = new List<Game>();
         List<string> consoles = new List<string>();
 
-        //GlobalConfig.Connection.GetTournament_All();
         public MainWindow()
         {
             InitializeComponent();
+            AddVersionNumber();
             consoles = LoadConsolesList();
             LoadGamesList();
 
-            AddVersionNumber();
-            CheckForUpdates();
             lbConsole.ItemsSource = consoles;
             tbSetPercentage.Text = "Mastery %";
-        }
-
-        private async Task CheckForUpdates()
-        {
-            using (var manager = new UpdateManager(@"C:/Temp/Releases")) 
-            {
-                await manager.UpdateApp();
-            }
         }
 
         private void AddVersionNumber()
@@ -97,7 +87,6 @@ namespace RAPlanner
         {
             lbListOfGames.ItemsSource = null;
             lbListOfGames.ItemsSource = games;
-            //lbListOfGames.DisplayMemberPath = "FullGame";
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
@@ -166,7 +155,7 @@ namespace RAPlanner
         private void btnGoToGamePage_Click(object sender, RoutedEventArgs e)
         {
             Game game = (Game)lbListOfGames.SelectedItem;
-            //Hyperlink gamePage;
+           
 
             if (game != null)
             {

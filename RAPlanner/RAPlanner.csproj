@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\squirrel.windows.2.0.1\build\squirrel.windows.props" Condition="Exists('..\packages\squirrel.windows.2.0.1\build\squirrel.windows.props')" />
   <Import Project="..\packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -99,17 +98,8 @@
     <Reference Include="Mono.Cecil.Rocks, Version=0.11.2.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\packages\Mono.Cecil.0.11.2\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="NuGet.Squirrel, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\squirrel.windows.2.0.1\lib\Net45\NuGet.Squirrel.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpCompress, Version=0.17.1.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpCompress.0.17.1\lib\net45\SharpCompress.dll</HintPath>
-    </Reference>
     <Reference Include="SQLitePCLRaw.core, Version=2.1.0.1603, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.core.2.1.0\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
-    </Reference>
-    <Reference Include="Squirrel, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\squirrel.windows.2.0.1\lib\Net45\Squirrel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -243,7 +233,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
     <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
-    <Error Condition="!Exists('..\packages\squirrel.windows.2.0.1\build\squirrel.windows.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\squirrel.windows.2.0.1\build\squirrel.windows.props'))" />
   </Target>
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
 </Project>
