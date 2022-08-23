@@ -70,9 +70,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding Name}" />
                             <TextBlock Grid.Column="1" Text="{Binding Console}" HorizontalAlignment="Center" />
-                            <ProgressBar Foreground="HotPink" Grid.Column="2" Minimum="0" Maximum="100" Value="{Binding Completion}">
-
-                            </ProgressBar>
+                            <ProgressBar Foreground="HotPink" Grid.Column="2" Minimum="0" Maximum="100" Value="{Binding Completion}"/>
                             <TextBlock Grid.Column="3" HorizontalAlignment="Right">
                                 <Run Text="{Binding Completion}"/>
                                 <Run Text="% Completed"/>

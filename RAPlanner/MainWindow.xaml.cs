@@ -54,6 +54,7 @@ namespace RAPlanner
             list.Add("Sega Saturn");
             list.Add("Sega Dreamcast");
             list.Add("3DO");
+            list.Add("Arcade");
             list.Add("Arduboy");
             list.Add("MSX");
             list.Add("Neo Geo Pocket");
@@ -87,12 +88,7 @@ namespace RAPlanner
         {
             Game game = new Game();
             game.Name = tbGame.Text;
-            if (game.Console != null)
-            {
-
-            
             game.Console = lbConsole.SelectedValue.ToString();
-            }
             game.Link = tbLink.Text;
 
             //games.Add(game);
@@ -100,12 +96,11 @@ namespace RAPlanner
             if (game != null)
             {
 
-            
-            SqliteDataAccess.SaveGame(game);
+                SqliteDataAccess.SaveGame(game);
 
-            tbGame.Text = "";
-            tbLink.Text = "";
-            LoadGamesList();
+                tbGame.Text = "";
+                tbLink.Text = "";
+                LoadGamesList();
             }
         }
 
@@ -120,12 +115,12 @@ namespace RAPlanner
 
                 SqliteDataAccess.UpdateCompletion(game);
                 LoadGamesList();
-                if(percentage >= 100) 
+                if (percentage >= 100)
                 {
                     MessageBox.Show("Congratulations for the mastery!");
                 }
             }
-            
+
             else
             {
                 MessageBox.Show("You need to select a game first to set the percentage.");
@@ -136,7 +131,7 @@ namespace RAPlanner
         {
             Game game = (Game)lbListOfGames.SelectedItem;
 
-            if(game != null)
+            if (game != null)
             {
                 games.Remove(game);
 
@@ -152,7 +147,7 @@ namespace RAPlanner
             Game game = (Game)lbListOfGames.SelectedItem;
             //Hyperlink gamePage;
 
-            if(game != null)
+            if (game != null)
             {
                 string gamePage = game.Link;
                 System.Diagnostics.Process.Start($"{gamePage}");
