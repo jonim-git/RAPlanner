@@ -30,6 +30,7 @@ namespace RAPlanner
             consoles = LoadConsolesList();
             LoadGamesList();
             lbConsole.ItemsSource = consoles;
+            tbSetPercentage.Text = "Mastery %";
         }
 
         private List<string> LoadConsolesList()
@@ -86,21 +87,50 @@ namespace RAPlanner
         {
             Game game = new Game();
             game.Name = tbGame.Text;
+            if (game.Console != null)
+            {
+
+            
             game.Console = lbConsole.SelectedValue.ToString();
+            }
             game.Link = tbLink.Text;
 
             //games.Add(game);
             //WireUpGamesList();
+            if (game != null)
+            {
+
+            
             SqliteDataAccess.SaveGame(game);
 
             tbGame.Text = "";
             tbLink.Text = "";
+            LoadGamesList();
+            }
         }
 
-        //private void btnMarkAsCompleted_Click(object sender, RoutedEventArgs e)
-        //{
+        private void btnSetPercentage_Click(object sender, RoutedEventArgs e)
+        {
+            Game game = (Game)lbListOfGames.SelectedItem;
+            int percentage = 0;
+            if (game != null)
+            {
+                int.TryParse(tbSetPercentage.Text, out percentage);
+                game.Completion = percentage;
 
-        //}
+                SqliteDataAccess.UpdateCompletion(game);
+                LoadGamesList();
+                if(percentage >= 100) 
+                {
+                    MessageBox.Show("Congratulations for the mastery!");
+                }
+            }
+            
+            else
+            {
+                MessageBox.Show("You need to select a game first to set the percentage.");
+            }
+        }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
@@ -113,12 +143,25 @@ namespace RAPlanner
                 WireUpGamesList();
 
                 SqliteDataAccess.RemoveGame(game);
+                LoadGamesList();
             }
         }
 
         private void btnGoToGamePage_Click(object sender, RoutedEventArgs e)
         {
+            Game game = (Game)lbListOfGames.SelectedItem;
+            //Hyperlink gamePage;
 
+            if(game != null)
+            {
+                string gamePage = game.Link;
+                System.Diagnostics.Process.Start($"{gamePage}");
+            }
+        }
+
+        private void tbSetPercentage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            tbSetPercentage.Clear();
         }
     }
 }

@@ -21,13 +21,13 @@ namespace RAPlanner
             }
         }
 
-            public static void SaveGame(Game game)
+        public static void SaveGame(Game game)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-                {
-                    cnn.Execute("insert into Game (Name, Console, Link) values (@Name, @Console, @Link)", game);
-                }
+                cnn.Execute("insert into Game (Name, Console, Link) values (@Name, @Console, @Link)", game);
             }
+        }
 
         public static void RemoveGame(Game game)
         {
@@ -38,10 +38,16 @@ namespace RAPlanner
         }
 
         private static string LoadConnectionString(string id = "Default")
+        {
+            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+        }
+
+        public static void UpdateCompletion(Game game)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+                cnn.Query("update Game set Completion = @Completion where Id = @Id", game);
             }
-
-
         }
     }
+}

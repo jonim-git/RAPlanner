@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RAPlanner"
         mc:Ignorable="d"
-        Title="RAPlanner" Height="480" Width="800">
+        Title="RAPlanner" Height="500" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*"></ColumnDefinition>
@@ -70,7 +70,9 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding Name}" />
                             <TextBlock Grid.Column="1" Text="{Binding Console}" HorizontalAlignment="Center" />
-                            <ProgressBar Foreground="HotPink" Grid.Column="2" Minimum="0" Maximum="100" Value="{Binding Completion}" />
+                            <ProgressBar Foreground="HotPink" Grid.Column="2" Minimum="0" Maximum="100" Value="{Binding Completion}">
+
+                            </ProgressBar>
                             <TextBlock Grid.Column="3" HorizontalAlignment="Right">
                                 <Run Text="{Binding Completion}"/>
                                 <Run Text="% Completed"/>
@@ -81,13 +83,15 @@
             </ListBox>
         </StackPanel>
 
-        <Label Grid.Column="1" Grid.Row="2"  HorizontalContentAlignment="Stretch">
-            <Button x:Name="btnMarkAsCompleted"  >
-                <StackPanel Orientation="Horizontal">
-                    <Image Width="50" Height="50" Source="/Images/Checkmark-green-tick-isolated-on-transparent-background-PNG.png" Margin="0,0,5,5"/>
-                    <AccessText FontSize="32" Text="100%" Margin="0,0,5,0"></AccessText>
-                </StackPanel>
-            </Button>
+        <Label Grid.Column="1" Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="tbSetPercentage" FontSize="30" Width="150" TextAlignment="Center" MouseDoubleClick="tbSetPercentage_MouseDoubleClick" ></TextBox>
+                <Button x:Name="btnMarkAsCompleted" Click="btnSetPercentage_Click" HorizontalAlignment="Right"  >
+
+                    <Image Width="50" Height="50" Source="/Images/Checkmark-green-tick-isolated-on-transparent-background-PNG.png" Margin="0,0,0,5"/>
+
+                </Button>
+            </StackPanel>
         </Label>
         <Label Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left">
             <Button x:Name="btnRemove"  Width="217" Click="btnRemove_Click">
@@ -99,7 +103,7 @@
         </Label>
 
         <Label Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"  HorizontalContentAlignment="Stretch" >
-            <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" x:Name="btnGoToGamePage"   >
+            <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" x:Name="btnGoToGamePage" Click="btnGoToGamePage_Click"   >
                 <StackPanel Orientation="Horizontal">
                     <Image Width="50" Height="50" Source="/Images/RetroAchievements_logo_square_color.png" Margin="0,0,5,0"/>
                     <AccessText FontSize="32" Text="Go to Game's page" Margin="0,0,5,0"></AccessText>
