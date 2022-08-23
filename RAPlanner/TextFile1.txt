@@ -1,0 +1,57 @@
+﻿RAPlanner
+
+General idea:
+Lets user have a App for what to play next, and what they have already played. Similar to style of MAL.
+Shows the Game's name, Console, show a status if it's played or not, rating and a link to game.
+
+Additional ideas to be added:
+progress bar showing the achievement hunting progress
+Display image from RAServer
+Style the application
+
+Add Game
+- Name
+- Console
+- Link to the game
+
+Refresh List
+- Refreshes the list
+
+List of games (separate window?)
+- Shows a list of the games
+	* name, status, rating, (progress bar)
+	* doubleclicking on the game opens a new box that shows detailed info
+		- Name
+		- Console
+		- Genre
+		- Link to the game
+		- Status
+		- (Image)
+		- When the user marks the game completed/tried, it asks the user whether to delete the game from the database
+		- Also have a button to delete the game straight from database, ask for confirmation
+		- (Set Progress, when 100 mark as completed)
+
+		<ListBoxItem Selected="lbConsole_Selected">GBC</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">GBA</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">NES/Famicom</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">SNES/Super Famicom</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">N64</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">NDS</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Playstation</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">PSP</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">PC Engine</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">PC-8000/8800</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">PC-FX</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Master System</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Game Gear</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Genesis</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Sega CD</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Sega Saturn</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Sega Dreamcast</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected"></ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Arduboy</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">MSX</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Neo Geo Pocket</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">WASM-4</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">WonderSwan</ListBoxItem>
+                <ListBoxItem Selected="lbConsole_Selected">Other</ListBoxItem>
