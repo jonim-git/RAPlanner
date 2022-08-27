@@ -18,36 +18,62 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" Grid.RowSpan="2">
-            <Label>
+        <StackPanel Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,5">
+            <DockPanel>
+                <ToolBarTray DockPanel.Dock="Top" ToolBar.OverflowMode="Never" Background="White">
+                    <ToolBar Loaded="ToolBar_Loaded" Background="White">
+                        <Image Width="20" Source="/Images/1f579.png"/>
+                        <StackPanel Orientation="Horizontal">
+                        <Label>Add a game</Label>
+                            <Separator Height="auto"></Separator>
+                            <Label>Mode:</Label>
+                        </StackPanel>
+                        <ComboBox SelectionChanged="cbMode_SelectionChanged" Name="cbMode">
+                            <ComboBoxItem Name="cbiToPlay" IsSelected="True" Margin="5,0,5,0">To-Play</ComboBoxItem>
+                            <ComboBoxItem Name="cbiToDev">To-Dev</ComboBoxItem>
+                        </ComboBox>
+                    </ToolBar>
+                </ToolBarTray>
+            </DockPanel>
+
+            <!--<Label>
                 <StackPanel Orientation="Horizontal">
                     <Image Width="32" Source="/Images/1f579.png" Margin="0,0,5,0"/>
                     <AccessText FontSize="32" Text="Add a game"></AccessText>
+                    
                 </StackPanel>
-            </Label>
+            </Label>-->
             <Label FontWeight="Bold" FontSize="18">Game</Label>
             <TextBox x:Name="tbGame" Height="25" Width="315" HorizontalAlignment="Left"></TextBox>
             <Label  FontWeight="Bold" FontSize="18">Console</Label>
             <ListBox HorizontalAlignment="Left" x:Name="lbConsole" Width="315" Height="100" SelectionMode="Single" >
-
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Right">
+            <Button Margin="5">Add a console..</Button>
+            <Button Margin="5">Remove</Button>
+            </StackPanel>
             <Label FontWeight="Bold" FontSize="18">Link</Label>
             <TextBox x:Name="tbLink" FontSize="18" Width="315" HorizontalAlignment="Left"></TextBox>
         </StackPanel>
 
-        <Label Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center">
-            <Button x:Name="btnSaveGame" Click="btnSaveGame_Click" Width="216">
+        <Label Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center" Margin="10">
+            <Button x:Name="btnSaveGame" Click="btnSaveGame_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="32" Source="/Images/floppy-disk-27226_640.png" Margin="0,0,5,0"/>
-                    <AccessText FontSize="32" Text="Save game" Margin="0,0,5,0"></AccessText>
+                    <AccessText FontSize="20" Text="Save game" Margin="0,0,5,0"></AccessText>
                 </StackPanel>
             </Button>
         </Label>
-        <Label Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Center">
+        <Label Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Center" Margin="10">
             <Button x:Name="btnRefresh" Click="btnRefresh_Click">
                 <StackPanel Orientation="Horizontal">
-                    <Image Width="50" Source="/Images/reload-1.1s-200px.png" Margin="0,0,5,0"/>
-                    <AccessText FontSize="32" Text="Refresh list" Margin="0,0,5,0"></AccessText>
+                    <Image Width="32" Source="/Images/reload-1.1s-200px.png" Margin="0,0,5,0"/>
+                    <AccessText FontSize="20" Text="Refresh list" Margin="0,0,5,0"></AccessText>
                 </StackPanel>
             </Button>
         </Label>
@@ -58,7 +84,7 @@
                     <AccessText FontSize="32" Text="List of Games"></AccessText>
                 </StackPanel>
             </Label>
-            <ListBox x:Name="lbListOfGames" HorizontalContentAlignment="Stretch"  Height="270">
+            <ListBox x:Name="lbListOfGames" HorizontalContentAlignment="Stretch"  Height="270" SelectionChanged="lbListOfGames_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -83,28 +109,28 @@
 
         <Label Grid.Column="1" Grid.Row="2">
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tbSetPercentage" FontSize="30" Width="150" TextAlignment="Center" MouseDoubleClick="tbSetPercentage_MouseDoubleClick" ></TextBox>
+                <TextBox x:Name="tbSetPercentage" FontSize="20" Width="150" TextAlignment="Center" MouseDoubleClick="tbSetPercentage_MouseDoubleClick" ></TextBox>
                 <Button x:Name="btnMarkAsCompleted" Click="btnSetPercentage_Click" HorizontalAlignment="Right"  >
 
-                    <Image Width="50" Height="50" Source="/Images/Checkmark-green-tick-isolated-on-transparent-background-PNG.png" Margin="0,0,0,5"/>
+                    <Image Width="32"  Source="/Images/pngegg.png" Margin="5"/>
 
                 </Button>
             </StackPanel>
         </Label>
         <Label Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left">
-            <Button x:Name="btnRemove"  Width="217" Click="btnRemove_Click">
+            <Button x:Name="btnRemove"  Width="217" Click="btnRemove_Click" HorizontalContentAlignment="Left" Height="47">
                 <StackPanel Orientation="Horizontal">
-                    <Image Width="50" Height="50" Source="/Images/NicePng_trashcan-png_1222136.png" Margin="0,0,5,5"/>
-                    <AccessText FontSize="32" Text="Remove" Margin="0,0,5,0"></AccessText>
+                    <Image Width="32" Source="/Images/NicePng_trashcan-png_1222136.png" Margin="5"/>
+                    <AccessText FontSize="20" Text="Remove selected" Margin="5,5,5,5" VerticalAlignment="Center"></AccessText>
                 </StackPanel>
             </Button>
         </Label>
 
         <Label Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"  HorizontalContentAlignment="Stretch" >
-            <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" x:Name="btnGoToGamePage" Click="btnGoToGamePage_Click"   >
+            <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" x:Name="btnGoToGamePage" Click="btnGoToGamePage_Click" HorizontalContentAlignment="Left"   >
                 <StackPanel Orientation="Horizontal">
-                    <Image Width="50" Height="50" Source="/Images/RetroAchievements_logo_square_color.png" Margin="0,0,5,0"/>
-                    <AccessText FontSize="32" Text="Go to Game's page" Margin="0,0,5,0"></AccessText>
+                    <Image Width="50" Height="50" Source="/Images/RetroAchievements_logo_square_color.png" Margin="5,5,5,3"/>
+                    <AccessText FontSize="20" Name="atGamePage" Margin="5,10,5,5" HorizontalAlignment="Center" VerticalAlignment="Center"></AccessText>
                 </StackPanel>
             </Button>
         </Label>

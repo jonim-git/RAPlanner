@@ -21,11 +21,43 @@ namespace RAPlanner
             }
         }
 
+        public static List<Console> LoadConsoles()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<Console>("select * from Console", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
+        public static List<Dev> LoadDevGames()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<Dev>("select * from Dev", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        
         public static void SaveGame(Game game)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 cnn.Execute("insert into Game (Name, Console, Link) values (@Name, @Console, @Link)", game);
+            }
+        }
+        public static void SaveConsole(Console console)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("insert into Console (Name) values (@Name)", console);
+            }
+        }
+        public static void SaveDevGame(Dev dev)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("insert into Dev (Name, Console, Link) values (@Name, @Console, @Link)", dev);
             }
         }
 
@@ -34,6 +66,21 @@ namespace RAPlanner
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 cnn.Query("delete from Game where Id = @Id", game);
+            }
+        }
+
+        public static void RemoveDevGame(Dev dev)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Query("delete from Dev where Id = @Id", dev);
+            }
+        }
+        public static void RemoveConsole(Console console)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Query("delete from Console where Id = @Id", console);
             }
         }
 
@@ -47,6 +94,14 @@ namespace RAPlanner
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 cnn.Query("update Game set Completion = @Completion where Id = @Id", game);
+            }
+        }
+
+        public static void UpdateDevCompletion(Dev dev)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Query("update Dev set Completion = @Completion where Id = @Id", dev);
             }
         }
     }
