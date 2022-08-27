@@ -35,6 +35,7 @@ namespace RAPlanner
 
             lbConsole.ItemsSource = consoles;
             tbSetPercentage.Text = "Completion %";
+            atGamePage.Text = "Show site of the game in a browser";
 
             if (mode == 0)
             {
@@ -305,5 +306,20 @@ namespace RAPlanner
                 } 
             }
         }
+
+        //TODO Refresh list on mode changes
+
+        //TODO Ask confirmation in delete
+
+        //TODO Progressbar colors
+
+        //TODO Add a new console
+
+        //TODO Remove a new console
+
+        //TODO Save/Load your lists?
+
+        //TODO Check for updates
+
     }
 }
