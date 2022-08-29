@@ -32,7 +32,6 @@ namespace RAPlanner
             InitializeComponent();
             AddVersionNumber();
             LoadConsolesList();
-
             lbConsole.ItemsSource = consoles;
             tbSetPercentage.Text = "Completion %";
             atGamePage.Text = "Show site of the game in a browser";
