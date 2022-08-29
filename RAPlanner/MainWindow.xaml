@@ -24,25 +24,18 @@
                     <ToolBar Loaded="ToolBar_Loaded" Background="White">
                         <Image Width="20" Source="/Images/1f579.png"/>
                         <StackPanel Orientation="Horizontal">
-                        <Label>Add a game</Label>
-                            <Separator Height="auto"></Separator>
-                            <Label>Mode:</Label>
+
+                            <Label Content="Add a game"/>
+                            <Separator Height="auto"/>
+                            <Label Content="Mode:"/>
                         </StackPanel>
                         <ComboBox SelectionChanged="cbMode_SelectionChanged" Name="cbMode">
-                            <ComboBoxItem Name="cbiToPlay" Margin="5,0,5,0">To-Play</ComboBoxItem>
+                            <ComboBoxItem Name="cbiToPlay">To-Play</ComboBoxItem>
                             <ComboBoxItem Name="cbiToDev">To-Dev</ComboBoxItem>
                         </ComboBox>
                     </ToolBar>
                 </ToolBarTray>
             </DockPanel>
-
-            <!--<Label>
-                <StackPanel Orientation="Horizontal">
-                    <Image Width="32" Source="/Images/1f579.png" Margin="0,0,5,0"/>
-                    <AccessText FontSize="32" Text="Add a game"></AccessText>
-                    
-                </StackPanel>
-            </Label>-->
             <Label FontWeight="Bold" FontSize="18">Game</Label>
             <TextBox x:Name="tbGame" Height="25" Width="315" HorizontalAlignment="Left"></TextBox>
             <Label  FontWeight="Bold" FontSize="18">Console</Label>
@@ -53,9 +46,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Right">
-            <TextBox x:Name="tbConsole" Height="25" Width="170" Margin="0,0,5,0"/>
-                <Button x:Name="btnAddConsole" Margin="5" Click="btnAddConsole_Click">Add a console +</Button>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Left">
+            <TextBox x:Name="tbConsole" Height="25" Width="180" HorizontalAlignment="Left" Margin="0,0,5,0"></TextBox>
+            <Button x:Name="btnAddConsole" Margin="5" Click="btnAddConsole_Click">Add a console +</Button>
             <Button x:Name="btnRemoveConsole" Margin="5" Click="btnRemoveConsole_Click">Remove</Button>
             </StackPanel>
             <Label FontWeight="Bold" FontSize="18">Link</Label>
@@ -110,16 +103,16 @@
 
         <Label Grid.Column="1" Grid.Row="2">
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tbSetPercentage" FontSize="22" Width="150" TextAlignment="Center" MouseDoubleClick="tbSetPercentage_MouseDoubleClick" GotFocus="tbSetPercentage_GotFocus"/>
+                <TextBox x:Name="tbSetPercentage" FontSize="22" Width="150" VerticalContentAlignment="Center" TextAlignment="Center" GotFocus="tbSetPercentage_GotFocus" Height="47"/>
                 <Button x:Name="btnMarkAsCompleted" Click="btnSetPercentage_Click" HorizontalAlignment="Right"  >
 
-                    <Image Width="32"  Source="/Images/pngegg.png" Margin="5"/>
+                    <Image Width="33"  Source="/Images/pngegg.png" Margin="5"/>
 
                 </Button>
             </StackPanel>
         </Label>
         <Label Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left">
-            <Button x:Name="btnRemove"  Width="217" Click="btnRemove_Click" HorizontalContentAlignment="Left" Height="47">
+            <Button x:Name="btnRemove"  Width="212" Click="btnRemove_Click" HorizontalContentAlignment="Left" Height="47">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="32" Source="/Images/NicePng_trashcan-png_1222136.png" Margin="5"/>
                     <AccessText FontSize="20" Text="Remove selected" Margin="5,5,5,5" VerticalAlignment="Center"></AccessText>

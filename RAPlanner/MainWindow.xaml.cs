@@ -195,35 +195,41 @@ namespace RAPlanner
         {
             if (mode == 0)
             {
-                Game game = (Game)lbListOfGames.SelectedItem;
-                if (MessageBox.Show($"Are you sure you want to remove {game.Name} from the list?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (lbListOfGames.SelectedItem != null)
                 {
-                    if (game != null)
+                    Game game = (Game)lbListOfGames.SelectedItem;
+                    if (MessageBox.Show($"Are you sure you want to remove {game.Name} from the list?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     {
-                        games.Remove(game);
+                        if (game != null)
+                        {
+                            games.Remove(game);
 
-                        WireUpGamesList();
+                            WireUpGamesList();
 
-                        SqliteDataAccess.RemoveGame(game);
-                        LoadGamesList();
+                            SqliteDataAccess.RemoveGame(game);
+                            LoadGamesList();
+                        }
                     }
                 }
             }
 
             else if (mode == 1)
             {
-                Dev dev = (Dev)lbListOfGames.SelectedItem;
-
-                if (MessageBox.Show($"Are you sure you want to remove {dev.Name} from the list?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (lbListOfGames.SelectedItem != null)
                 {
-                    if (dev != null)
+                    Dev dev = (Dev)lbListOfGames.SelectedItem;
+
+                    if (MessageBox.Show($"Are you sure you want to remove {dev.Name} from the list?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     {
-                        games.Remove(dev);
+                        if (dev != null)
+                        {
+                            games.Remove(dev);
 
-                        WireUpGamesList();
+                            WireUpGamesList();
 
-                        SqliteDataAccess.RemoveDevGame(dev);
-                        LoadDevGamesList();
+                            SqliteDataAccess.RemoveDevGame(dev);
+                            LoadDevGamesList();
+                        }
                     }
                 }
             }
@@ -335,8 +341,10 @@ namespace RAPlanner
 
         private void btnRemoveConsole_Click(object sender, RoutedEventArgs e)
         {
-            
-                Console console = (Console)lbConsole.SelectedItem;
+
+            Console console = (Console)lbConsole.SelectedItem;
+            if (lbConsole.SelectedItem != null)
+            {
                 if (MessageBox.Show($"Are you sure you want to remove {console.Name} from the list?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     if (console != null)
@@ -349,6 +357,7 @@ namespace RAPlanner
                         LoadConsolesList();
                     }
                 }
+            }
         }
 
         //TODO Progressbar colors
