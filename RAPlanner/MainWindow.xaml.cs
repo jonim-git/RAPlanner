@@ -27,6 +27,7 @@ namespace RAPlanner
         List<Dev> devGames;
         List<Console> consoles;
         public int mode = 0;
+        
 
 
         public MainWindow()
@@ -38,6 +39,7 @@ namespace RAPlanner
             lbConsole.ItemsSource = consoles;
             tbSetPercentage.Text = "Completion %";
             atGamePage.Text = "Show site of the game in a browser";
+            cbMode.Text = (string)cbiToPlay.Content;
 
             if (mode == 0)
             {

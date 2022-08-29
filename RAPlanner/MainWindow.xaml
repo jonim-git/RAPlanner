@@ -30,8 +30,8 @@
                             <Label Content="Mode:"/>
                         </StackPanel>
                         <ComboBox SelectionChanged="cbMode_SelectionChanged" Name="cbMode">
-                            <ComboBoxItem Name="cbiToPlay">To-Play</ComboBoxItem>
-                            <ComboBoxItem Name="cbiToDev">To-Dev</ComboBoxItem>
+                            <ComboBoxItem Content="To-Play" Name="cbiToPlay"/>
+                            <ComboBoxItem Content="To-Dev" Name="cbiToDev"/>
                         </ComboBox>
                     </ToolBar>
                 </ToolBarTray>
