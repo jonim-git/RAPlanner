@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,12 +23,14 @@ namespace RAPlanner
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Game> games = new List<Game>();
-        List<Dev> devGames = new List<Dev>();
-        List<Console> consoles = new List<Console>();
-        public int mode;
+        List<Game> games;
+        List<Dev> devGames;
+        List<Console> consoles;
+        public int mode = 0;
+
 
         public MainWindow()
+
         {
             InitializeComponent();
             AddVersionNumber();
@@ -93,12 +96,10 @@ namespace RAPlanner
         {
             if (mode == 0)
             {
-
                 LoadGamesList();
             }
             else if (mode == 1)
             {
-
                 LoadDevGamesList();
             }
         }
@@ -123,7 +124,7 @@ namespace RAPlanner
                 }
 
             }
-            else if (mode == 1 )
+            else if (mode == 1)
             {
                 Dev dev = new Dev();
                 dev.Name = tbGame.Text;
@@ -195,15 +196,17 @@ namespace RAPlanner
             if (mode == 0)
             {
                 Game game = (Game)lbListOfGames.SelectedItem;
-
-                if (game != null)
+                if (MessageBox.Show($"Are you sure you want to remove {game.Name} from the list?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    games.Remove(game);
+                    if (game != null)
+                    {
+                        games.Remove(game);
 
-                    WireUpGamesList();
+                        WireUpGamesList();
 
-                    SqliteDataAccess.RemoveGame(game);
-                    LoadGamesList();
+                        SqliteDataAccess.RemoveGame(game);
+                        LoadGamesList();
+                    }
                 }
             }
 
@@ -211,14 +214,17 @@ namespace RAPlanner
             {
                 Dev dev = (Dev)lbListOfGames.SelectedItem;
 
-                if (dev != null)
+                if (MessageBox.Show($"Are you sure you want to remove {dev.Name} from the list?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    games.Remove(dev);
+                    if (dev != null)
+                    {
+                        games.Remove(dev);
 
-                    WireUpGamesList();
+                        WireUpGamesList();
 
-                    SqliteDataAccess.RemoveDevGame(dev);
-                    LoadDevGamesList();
+                        SqliteDataAccess.RemoveDevGame(dev);
+                        LoadDevGamesList();
+                    }
                 }
             }
         }
@@ -273,25 +279,23 @@ namespace RAPlanner
 
         private void cbMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mode = cbMode.SelectedIndex;
-            if (mode != 0)
-            {
-                if (mode == 0)
-                {
-                    LoadGamesList();
-                }
-                else if (mode == 1)
-                {
 
-                    LoadDevGamesList();
-                } 
+            mode = cbMode.SelectedIndex;
+            if (mode == 0)
+            {
+                LoadGamesList();
             }
+            if (mode == 1)
+            {
+                LoadDevGamesList();
+            }
+
         }
 
         private void lbListOfGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            if (lbListOfGames.SelectedItem != null)
+            if (lbListOfGames.SelectedIndex != -1 && lbListOfGames.SelectedItem != null)
             {
                 if (mode == 0)
                 {
@@ -302,19 +306,52 @@ namespace RAPlanner
                 {
 
                     atGamePage.Text = "Show site of the game " + ((Dev)lbListOfGames.SelectedItem).Name + " in a browser";
-                } 
+                }
             }
         }
 
-        //TODO Refresh list on mode changes
+        private void tbSetPercentage_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbSetPercentage.Text = "";
+        }
 
-        //TODO Ask confirmation in delete
+        private void btnAddConsole_Click(object sender, RoutedEventArgs e)
+        {
+            Console console = new Console();
+
+
+
+            console.Name = tbConsole.Text;
+
+            if (console != null)
+            {
+
+                SqliteDataAccess.SaveConsole(console);
+
+                tbConsole.Text = "";
+                LoadConsolesList();
+            }
+        }
+
+        private void btnRemoveConsole_Click(object sender, RoutedEventArgs e)
+        {
+            
+                Console console = (Console)lbConsole.SelectedItem;
+                if (MessageBox.Show($"Are you sure you want to remove {console.Name} from the list?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    if (console != null)
+                    {
+                        consoles.Remove(console);
+
+                        WireUpConsolesList();
+
+                        SqliteDataAccess.RemoveConsole(console);
+                        LoadConsolesList();
+                    }
+                }
+        }
 
         //TODO Progressbar colors
-
-        //TODO Add a new console
-
-        //TODO Remove a new console
 
         //TODO Save/Load your lists?
 

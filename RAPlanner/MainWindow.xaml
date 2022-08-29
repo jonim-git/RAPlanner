@@ -29,7 +29,7 @@
                             <Label>Mode:</Label>
                         </StackPanel>
                         <ComboBox SelectionChanged="cbMode_SelectionChanged" Name="cbMode">
-                            <ComboBoxItem Name="cbiToPlay" IsSelected="True" Margin="5,0,5,0">To-Play</ComboBoxItem>
+                            <ComboBoxItem Name="cbiToPlay" Margin="5,0,5,0">To-Play</ComboBoxItem>
                             <ComboBoxItem Name="cbiToDev">To-Dev</ComboBoxItem>
                         </ComboBox>
                     </ToolBar>
@@ -54,8 +54,9 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Right">
-            <Button Margin="5">Add a console..</Button>
-            <Button Margin="5">Remove</Button>
+            <TextBox x:Name="tbConsole" Height="25" Width="170" Margin="0,0,5,0"/>
+                <Button x:Name="btnAddConsole" Margin="5" Click="btnAddConsole_Click">Add a console +</Button>
+            <Button x:Name="btnRemoveConsole" Margin="5" Click="btnRemoveConsole_Click">Remove</Button>
             </StackPanel>
             <Label FontWeight="Bold" FontSize="18">Link</Label>
             <TextBox x:Name="tbLink" FontSize="18" Width="315" HorizontalAlignment="Left"></TextBox>
@@ -109,7 +110,7 @@
 
         <Label Grid.Column="1" Grid.Row="2">
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="tbSetPercentage" FontSize="20" Width="150" TextAlignment="Center" MouseDoubleClick="tbSetPercentage_MouseDoubleClick" ></TextBox>
+                <TextBox x:Name="tbSetPercentage" FontSize="22" Width="150" TextAlignment="Center" MouseDoubleClick="tbSetPercentage_MouseDoubleClick" GotFocus="tbSetPercentage_GotFocus"/>
                 <Button x:Name="btnMarkAsCompleted" Click="btnSetPercentage_Click" HorizontalAlignment="Right"  >
 
                     <Image Width="32"  Source="/Images/pngegg.png" Margin="5"/>
