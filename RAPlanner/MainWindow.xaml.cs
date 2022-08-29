@@ -287,7 +287,6 @@ namespace RAPlanner
 
         private void cbMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             mode = cbMode.SelectedIndex;
             if (mode == 0)
             {
@@ -297,7 +296,6 @@ namespace RAPlanner
             {
                 LoadDevGamesList();
             }
-
         }
 
         private void lbListOfGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -362,11 +360,9 @@ namespace RAPlanner
             }
         }
 
-        //TODO Progressbar colors
+        private void cbProgressBarColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-        //TODO Save/Load your lists?
-
-        //TODO Check for updates
-
+        }
     }
 }
