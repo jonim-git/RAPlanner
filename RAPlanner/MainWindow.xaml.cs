@@ -293,13 +293,13 @@ namespace RAPlanner
             {
                 if (mode == 0)
                 {
-                    atGamePage.Text = "Show site of the game " + ((Game)lbListOfGames.SelectedItem).Name + " in a browser";
+                    atGamePage.Text = "Show " + ((Game)lbListOfGames.SelectedItem).Name + " in a browser";
 
                 }
                 else if (mode == 1)
                 {
 
-                    atGamePage.Text = "Show site of the game " + ((Dev)lbListOfGames.SelectedItem).Name + " in a browser";
+                    atGamePage.Text = "Show " + ((Dev)lbListOfGames.SelectedItem).Name + " in a browser";
                 }
             }
         }
@@ -352,6 +352,7 @@ namespace RAPlanner
         {
             ProgressBar pbCompletion = sender as ProgressBar;
             pbCompletion.Foreground = new SolidColorBrush((Color)cpProgressBar.SelectedColor);
+            
         }
     }
 }
