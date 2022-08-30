@@ -1,20 +1,9 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RAPlanner
 {
@@ -27,8 +16,6 @@ namespace RAPlanner
         List<Dev> devGames;
         List<Console> consoles;
         public int mode = 0;
-        
-
 
         public MainWindow()
 
@@ -40,6 +27,7 @@ namespace RAPlanner
             tbSetPercentage.Text = "Completion %";
             atGamePage.Text = "Show site of the game in a browser";
             cbMode.Text = (string)cbiToPlay.Content;
+            
 
             if (mode == 0)
             {
@@ -360,9 +348,10 @@ namespace RAPlanner
             }
         }
 
-        private void cbProgressBarColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void pbCompletion_Loaded(object sender, RoutedEventArgs e)
         {
-
+            ProgressBar pbCompletion = sender as ProgressBar;
+            pbCompletion.Foreground = new SolidColorBrush((System.Windows.Media.Color)cpProgressBar.SelectedColor);
         }
     }
 }
