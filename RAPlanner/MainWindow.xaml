@@ -77,7 +77,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Width="32" Source="Images/joystick.png" Margin="0,0,5,0"></Image>
                     <AccessText FontSize="32" Text="List of Games"></AccessText>
-                    <xctk:ColorPicker Margin="5" Width="auto" Name="cpProgressBar" SelectedColor="HotPink" DisplayColorAndName="True"></xctk:ColorPicker>
+                    <!--<xctk:ColorPicker SelectedColor="Purple" Margin="5" Width="auto" Name="cpProgressBar" DisplayColorAndName="True"></xctk:ColorPicker>-->
                 </StackPanel>
             </Label>
             <ListBox x:Name="lbListOfGames" HorizontalContentAlignment="Stretch"  Height="270" SelectionChanged="lbListOfGames_SelectionChanged">
@@ -92,7 +92,8 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding Name}" />
                             <TextBlock Grid.Column="1" Text="{Binding Console}" HorizontalAlignment="Center" />
-                            <ProgressBar Background="{Binding Source={x:Static properties:Settings.Default}, Path=Setting, Mode=TwoWay}" Loaded="pbCompletion_Loaded" x:Name="pbCompletion" Grid.Column="2" Minimum="0" Maximum="100" Value="{Binding Completion}"/>
+                            <!--<ProgressBar Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=Setting, Mode=TwoWay}" Loaded="pbCompletion_Loaded" x:Name="pbCompletion" Grid.Column="2" Minimum="0" Maximum="100" Value="{Binding Completion}"/>-->
+                            <ProgressBar Foreground="HotPink" x:Name="pbCompletion" Grid.Column="2" Minimum="0" Maximum="100" Value="{Binding Completion}"/>
                             <TextBlock Grid.Column="3" HorizontalAlignment="Right">
                                 <Run Text="{Binding Completion}"/>
                                 <Run Text="% Completed"/>

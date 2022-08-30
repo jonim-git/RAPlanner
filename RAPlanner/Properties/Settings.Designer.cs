@@ -26,9 +26,9 @@ namespace RAPlanner.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color Color {
+        public string Color {
             get {
-                return ((global::System.Drawing.Color)(this["Color"]));
+                return ((string)(this["Color"]));
             }
             set {
                 this["Color"] = value;

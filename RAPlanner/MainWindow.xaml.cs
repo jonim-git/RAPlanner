@@ -348,11 +348,14 @@ namespace RAPlanner
             }
         }
 
-        private void pbCompletion_Loaded(object sender, RoutedEventArgs e)
-        {
-            ProgressBar pbCompletion = sender as ProgressBar;
-            pbCompletion.Foreground = new SolidColorBrush((Color)cpProgressBar.SelectedColor);
-            
-        }
+        // WORK IN PROGRESS
+
+        //private void pbCompletion_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    ProgressBar pbCompletion = sender as ProgressBar;
+        //    pbCompletion.Foreground = new SolidColorBrush((Color)cpProgressBar.SelectedColor);
+        //    RAPlanner.Properties.Settings.Default.Color = pbCompletion.Foreground.ToString();
+
+        //}
     }
 }
