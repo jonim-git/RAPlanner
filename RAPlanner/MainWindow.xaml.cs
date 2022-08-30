@@ -351,7 +351,7 @@ namespace RAPlanner
         private void pbCompletion_Loaded(object sender, RoutedEventArgs e)
         {
             ProgressBar pbCompletion = sender as ProgressBar;
-            pbCompletion.Foreground = new SolidColorBrush((System.Windows.Media.Color)cpProgressBar.SelectedColor);
+            pbCompletion.Foreground = new SolidColorBrush((Color)cpProgressBar.SelectedColor);
         }
     }
 }
