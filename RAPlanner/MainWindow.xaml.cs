@@ -27,7 +27,7 @@ namespace RAPlanner
             tbSetPercentage.Text = "Completion %";
             atGamePage.Text = "Show site of the game in a browser";
             cbMode.Text = (string)cbiToPlay.Content;
-            
+
 
             if (mode == 0)
             {
@@ -100,7 +100,10 @@ namespace RAPlanner
             {
                 Game game = new Game();
                 game.Name = tbGame.Text;
-                game.Console = ((Console)lbConsole.SelectedItem).Name;
+                if (game.Console != null)
+                {
+                    game.Console = ((Console)lbConsole.SelectedItem).Name;
+                }
                 game.Link = tbLink.Text;
 
                 if (game != null)
@@ -118,7 +121,10 @@ namespace RAPlanner
             {
                 Dev dev = new Dev();
                 dev.Name = tbGame.Text;
-                dev.Console = ((Console)lbConsole.SelectedItem).Name;
+                if (dev.Console!= null)
+                {
+                    dev.Console = ((Console)lbConsole.SelectedItem).Name; 
+                }
                 dev.Link = tbLink.Text;
 
                 if (dev != null)
