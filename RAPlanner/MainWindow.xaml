@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:RAPlanner"
         xmlns:properties="clr-namespace:RAPlanner.Properties"
         mc:Ignorable="d"
-        Title="RAPlanner" Height="500" Width="800">
+        Title="RAPlanner" Height="500" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*"></ColumnDefinition>
@@ -33,6 +33,13 @@
                         <ComboBox SelectionChanged="cbMode_SelectionChanged" Name="cbMode">
                             <ComboBoxItem Content="To-Play" Name="cbiToPlay"/>
                             <ComboBoxItem Content="To-Dev" Name="cbiToDev"/>
+                        </ComboBox>
+                        <Label Content="Order"/>
+                        <ComboBox SelectionChanged="cbOrder_SelectionChanged"  Name="cbOrder">
+                            <ComboBoxItem Content="By Name Asc" Name="cbiByName"/>
+                            <ComboBoxItem Content="By Progress Asc" Name="cbiByProgress"/>
+                            <ComboBoxItem Content="By Name Desc" Name="cbiByNameDesc"/>
+                            <ComboBoxItem Content="By Progress Desc" Name="cbiByProgressDesc"/>
                         </ComboBox>
                     </ToolBar>
                 </ToolBarTray>
@@ -77,8 +84,11 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Width="32" Source="Images/joystick.png" Margin="0,0,5,0"></Image>
                     <AccessText FontSize="32" Text="List of Games"></AccessText>
-                    <!--<xctk:ColorPicker SelectedColor="Purple" Margin="5" Width="auto" Name="cpProgressBar" DisplayColorAndName="True"></xctk:ColorPicker>-->
+                   
+                   <!--<xctk:ColorPicker SelectedColor="Purple" Margin="5" Width="auto" Name="cpProgressBar" DisplayColorAndName="True"></xctk:ColorPicker>-->
+                    
                 </StackPanel>
+                
             </Label>
             <ListBox x:Name="lbListOfGames" HorizontalContentAlignment="Stretch"  Height="270" SelectionChanged="lbListOfGames_SelectionChanged">
                 <ListBox.ItemTemplate>
@@ -104,18 +114,16 @@
             </ListBox>
         </StackPanel>
 
-        <Label Grid.Column="1" Grid.Row="2">
-            <StackPanel Orientation="Horizontal">
+        <Label Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBox x:Name="tbSetPercentage" FontSize="22" Width="150" VerticalContentAlignment="Center" TextAlignment="Center" GotFocus="tbSetPercentage_GotFocus" Height="47"/>
                 <Button x:Name="btnMarkAsCompleted" Click="btnSetPercentage_Click" HorizontalAlignment="Right"  >
-
                     <Image Width="33"  Source="/Images/pngegg.png" Margin="5"/>
-
                 </Button>
             </StackPanel>
         </Label>
-        <Label Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Left">
-            <Button x:Name="btnRemove"  Width="212" Click="btnRemove_Click" HorizontalContentAlignment="Left" Height="47">
+        <Label Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Button x:Name="btnRemove" Click="btnRemove_Click" HorizontalContentAlignment="Left"  Height="47">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="32" Source="/Images/NicePng_trashcan-png_1222136.png" Margin="5"/>
                     <AccessText FontSize="20" Text="Remove selected" Margin="5,5,5,5" VerticalAlignment="Center"></AccessText>

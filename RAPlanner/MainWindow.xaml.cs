@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Linq;
 
 namespace RAPlanner
 {
@@ -121,9 +122,9 @@ namespace RAPlanner
             {
                 Dev dev = new Dev();
                 dev.Name = tbGame.Text;
-                if (dev.Console!= null)
+                if (dev.Console != null)
                 {
-                    dev.Console = ((Console)lbConsole.SelectedItem).Name; 
+                    dev.Console = ((Console)lbConsole.SelectedItem).Name;
                 }
                 dev.Link = tbLink.Text;
 
@@ -352,6 +353,62 @@ namespace RAPlanner
                     }
                 }
             }
+        }
+
+        private void cbOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (cbOrder.SelectedItem != null) { 
+                if (mode == 0)
+                {
+                    if (cbOrder.SelectedItem == cbiByProgress)
+                    {
+                        lbListOfGames.ItemsSource = null;
+                        lbListOfGames.ItemsSource = games.OrderBy(x => x.Completion);
+                    }
+                    if (cbOrder.SelectedItem == cbiByName)
+                    {
+                        lbListOfGames.ItemsSource = null;
+                        lbListOfGames.ItemsSource = games.OrderBy(x => x.Name);
+                    }
+                    if (cbOrder.SelectedItem == cbiByNameDesc)
+                    {
+                        lbListOfGames.ItemsSource = null;
+                        lbListOfGames.ItemsSource = games.OrderByDescending(x => x.Name);
+                    }
+                    if (cbOrder.SelectedItem == cbiByProgressDesc)
+                    {
+                        lbListOfGames.ItemsSource = null;
+                        lbListOfGames.ItemsSource = games.OrderByDescending(x => x.Completion);
+                    }
+                }
+                else if (mode == 1)
+                {
+                    if (cbOrder.SelectedItem == cbiByProgress)
+                    {
+                        lbListOfGames.ItemsSource = null;
+                        lbListOfGames.ItemsSource = devGames.OrderBy(x => x.Completion);
+
+                    }
+                    if (cbOrder.SelectedItem == cbiByName)
+                    {
+                        lbListOfGames.ItemsSource = null;
+                        lbListOfGames.ItemsSource = devGames.OrderBy(x => x.Name);
+                    }
+                    if (cbOrder.SelectedItem == cbiByNameDesc)
+                    {
+                        lbListOfGames.ItemsSource = null;
+                        lbListOfGames.ItemsSource = devGames.OrderByDescending(x => x.Name);
+                    }
+                    if (cbOrder.SelectedItem == cbiByProgressDesc)
+                    {
+                        lbListOfGames.ItemsSource = null;
+                        lbListOfGames.ItemsSource = devGames.OrderByDescending(x => x.Completion);
+
+                    }
+                }
+            }
+
         }
 
         // WORK IN PROGRESS
